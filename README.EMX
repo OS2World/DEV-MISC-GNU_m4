@@ -1,0 +1,22 @@
+This copy of GNU m4 1.4 has been compiled with emx+gcc
+using the emx 0.9c development tools. It can be used under
+OS/2 and Win32.
+
+An up to date copy should always be available as
+
+  http://www.leo.org/pub/comp/os/os2/leo/gnu/devtools/gnum4.zip
+
+It requires the emx 0.9c or newer runtime under OS/2 and the
+RSXNT 1.40 runtime under Win32. Both can be found at
+
+  http://www.leo.org/pub/comp/os/os2/leo/gnu/emx+gcc/...
+
+Kai Uwe Rommel
+
+--
+/* Kai Uwe Rommel                   ARS Computer & Consulting GmbH *
+ * rommel@ars.de                                 Muenchen, Germany *
+ * rommel@leo.org (http://www.leo.org/pub/comp/os/os2 maintenance) */
+
+DOS ... is still a real mode only non-reentrant interrupt
+handler, and always will be.                -Russell Williams
