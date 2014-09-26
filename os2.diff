@@ -1,0 +1,56 @@
+diff --git a/build-aux/git-version-gen b/build-aux/git-version-gen
+index 3468247..f04b31f 100755
+--- a/build-aux/git-version-gen
++++ b/build-aux/git-version-gen
+@@ -126,6 +126,7 @@ fi
+ 
+ tag_sed_script="${tag_sed_script:-s/x/x/}"
+ 
++cr=''
+ nl='
+ '
+ 
+@@ -214,7 +215,7 @@ if test "x$v_from_git" != x; then
+ fi
+ 
+ # Omit the trailing newline, so that m4_esyscmd can use the result directly.
+-echo "$v" | tr -d "$nl"
++echo "$v" | tr -d "$cr$nl"
+ 
+ # Local variables:
+ # eval: (add-hook 'write-file-hooks 'time-stamp)
+diff --git a/configure.ac b/configure.ac
+index 2defd94..db26628 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -194,7 +194,7 @@ if test "$with_syscmd_shell" = no ; then
+   with_syscmd_shell=/bin/sh
+   if test "$cross_compiling" != yes ; then
+ dnl Give mingw a default that is more likely to be available.
+-    AS_IF([AS_EXECUTABLE_P([/bin/sh])], [],
++    AS_IF([AS_EXECUTABLE_P([/bin/sh$EXEEXT])], [],
+       [if (cmd /c) 2>/dev/null; then with_syscmd_shell=cmd; fi])
+ dnl Too bad _AS_PATH_WALK is not public.
+     M4_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -220,6 +220,8 @@ M4_WITH_DMALLOC
+ 
+ AC_CONFIG_COMMANDS([stamp-h], [[test -z "$CONFIG_HEADERS" || date > stamp-h]])
+ 
++AS_CASE([$host], [*os2*], [LDFLAGS="$LDFLAGS -Zargs-resp"])
++
+ AC_CONFIG_FILES([Makefile
+                  doc/Makefile
+                  lib/Makefile
+diff --git a/lib/spawn.in.h b/lib/spawn.in.h
+index bca2998..e22ec6b 100644
+--- a/lib/spawn.in.h
++++ b/lib/spawn.in.h
+@@ -32,7 +32,7 @@
+ 
+ /* Get definitions of 'struct sched_param' and 'sigset_t'.
+    But avoid namespace pollution on glibc systems.  */
+-#if !(defined __GLIBC__ && !defined __UCLIBC__)
++#if !(defined __GLIBC__ && !defined __UCLIBC__) && !defined __KLIBC__
+ # include <sched.h>
+ # include <signal.h>
+ #endif

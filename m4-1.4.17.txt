@@ -1,0 +1,35 @@
+                          Upload Information Template for Hobbes.nmsu.edu
+                          ===============================================
+
+        Archive Filename: m4-1.4.17.zip
+       Short Description: GNU M4 v1.4.17 for OS/2
+        Long Description: GNU M4 v1.4.17 for OS/2.
+GNU M4 is an implementation of the traditional Unix macro processor. It is
+mostly SVR4 compatible although it has some extensions (for example, handling
+more than 9 positional parameters to macros). GNU M4 also has built-in
+functions for including files, running shell commands, doing arithmetic, etc.
+
+v1.4.17 : AC_INIT fails due to m_esyscmd failure. Fixed
+
+v1.4.16 : Support a response file( using -Zargs-resp compiler flag )
+
+      Proposed directory
+           for placement: /pub/os2/dev/util
+
+               Your name: KO Myung-Hun
+           Email address: komh@chollian.net
+    Program contact name: (same)
+   Program contact email: (same)
+             Program URL: (none) 
+
+      Would you like the
+   contact email address
+    included in listings? yes
+
+Operating System/Version: 
+ Additional requirements: kLIBC v0.6.5
+
+                Replaces: (none)
+
+
+
